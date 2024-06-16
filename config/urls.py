@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from notes.views import index, add, edit, delete
+from portal.views import index
 
 urlpatterns = [
-    path("",index, name="notes-index"),
+    path("",index, name="portal-index"),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -4,23 +4,59 @@
 {% block bootstrap5_title %}New Notes{% endblock %}
 
 {% block bootstrap5_content %}
+    <style>
+body{
+    margin-top:20px;
+    background:#eee;
+}
+      .card {
+    background-color: #fff;
+    border: 0 solid #eee;
+    border-radius: 0;
+}
+.card {
+    margin-bottom: 30px;
+    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.1), -1px 0 2px rgba(0,0,0,0.05);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1), -1px 0 2px rgba(0,0,0,0.05);
+}
+.card-body {
+    padding: 1.25rem;
+}
+        .avatar.avatar-xl {
+    width: 5rem;
+    height: 5rem;
+}
+.avatar {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    display: inline-block;
+    background: #ced4da no-repeat center/cover;
+    position: relative;
+    text-align: center;
+    color: #868e96;
+    font-weight: 600;
+    vertical-align: bottom;
+}
+    </style>
     <div class="container mx-auto mt-4">
       <h1>{% block title %} Selemat datang, {{ request.user.username }}{% endblock %}</h1>
 
         {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
 
         {% block content %}
-        <a href="{% url 'notes-add' %}" class="btn btn-success mb-3" >Add</a>
         <div class="row">
-        {% for itm in notes_list %}
-        <div class="col-sm-6">
+        {% for itm in menus %}
+        <div class="col-sm-3">
         <div class="card mb-3">
           <div class="card-body">
-            <h5 class="card-title">{{ itm.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Last update: {{ itm.edited_date }}</h6>
-            <p class="card-text">{{ itm.body }}</p>
-            <a href="{% url 'notes-delete' itm.id  %}" class="card-link">Delete</a>
-            <a href="{% url 'notes-edit' itm.id %}" class="card-link">Edit</a>
+              <div class="media align-items-center">
+                <span style="background-image: url(https://bootdey.com/img/Content/avatar/avatar6.png)" class="avatar avatar-xl mr-3"></span>
+                <div class="media-body overflow-hidden">
+                    <p class="card-text">{{ itm.title }}</p>
+                </div>
+             </div>
           </div>
         </div>
         </div>
