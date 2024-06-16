@@ -28,3 +28,4 @@ sqlparse==0.2.4
 typing_extensions==4.12.2
 urllib3==2.2.1
 crispy-bootstrap5==0.7
+fontawesomefree==6.5.1

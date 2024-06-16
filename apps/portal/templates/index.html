@@ -1,7 +1,13 @@
 {% extends 'bootstrap5/bootstrap5.html' %}
 {% load bootstrap5 %}
+{% load static %}
 
-{% block bootstrap5_title %}New Notes{% endblock %}
+{% block bootstrap5_extra_head %}
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+<link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block bootstrap5_title %}Portal{% endblock %}
 
 {% block bootstrap5_content %}
     <style>
@@ -9,57 +15,31 @@ body{
     margin-top:20px;
     background:#eee;
 }
-      .card {
-    background-color: #fff;
-    border: 0 solid #eee;
-    border-radius: 0;
-}
-.card {
-    margin-bottom: 30px;
-    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.1), -1px 0 2px rgba(0,0,0,0.05);
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.1), -1px 0 2px rgba(0,0,0,0.05);
-}
-.card-body {
-    padding: 1.25rem;
-}
-        .avatar.avatar-xl {
-    width: 5rem;
-    height: 5rem;
-}
-.avatar {
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    border-radius: 50%;
-    display: inline-block;
-    background: #ced4da no-repeat center/cover;
-    position: relative;
-    text-align: center;
-    color: #868e96;
-    font-weight: 600;
-    vertical-align: bottom;
-}
+
     </style>
     <div class="container mx-auto mt-4">
-      <h1>{% block title %} Selemat datang, {{ request.user.username }}{% endblock %}</h1>
+      <h1>{% block title %} Selamat datang, {{ request.user.username }}{% endblock %}</h1>
 
         {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
 
         {% block content %}
         <div class="row">
         {% for itm in menus %}
-        <div class="col-sm-3">
-        <div class="card mb-3">
-          <div class="card-body">
-              <div class="media align-items-center">
-                <span style="background-image: url(https://bootdey.com/img/Content/avatar/avatar6.png)" class="avatar avatar-xl mr-3"></span>
-                <div class="media-body overflow-hidden">
-                    <p class="card-text">{{ itm.title }}</p>
-                </div>
-             </div>
-          </div>
-        </div>
-        </div>
+        <div class="card mb-3" style="max-width: 540px; margin-right: 20pt;">
+  <div class="row g-0">
+    <div class="col-md-4">
+        <i class="fa-solid {{ itm.icon }} fa-7x"></i>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <h5 class="card-title">{{ itm.title }}</h5>
+          <p class="card-text">{{ itm.desc }}</p>
+          <a href="{{ itm.url }}" target="_blank" class="btn btn-primary stretched-link">Visit</a>
+      </div>
+    </div>
+  </div>
+</div>
+
         {% endfor %}
         </div>
         {% endblock %}

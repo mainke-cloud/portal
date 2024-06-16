@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'pymongo',
     'crispy_forms',
     'bootstrap5',
+    'fontawesomefree',
     'portal',
 ]
 
