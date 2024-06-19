@@ -16,5 +16,11 @@ def index(request):
                 "icon": "fa-note-sticky",
                 "desc": "Aplikasi untuk mencatat semua urusan anda",
             },
+            {
+                "title": "Reimburse", 
+                "url": "https://newreimburse.coofis.com/oidc/authenticate",
+                "icon": "fa-file-invoice",
+                "desc": "Aplikasi untuk mencatat Reimburse anda",
+            },
     ]
     return render(request, "index.html", locals())
